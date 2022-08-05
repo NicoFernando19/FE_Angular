@@ -1,16 +1,30 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of dataList">
-        <th scope="row">{{ item.id }}</th>
-        <td>{{ item.title }}</td>
-        <td>{{ item.body }}</td>
-      </tr>
-    </tbody>
-</table>
+<div>
+  <input type="text" [(ngModel)]="name">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <input name="first" ngModel required #first="ngModel">
+    <input name="last" ngModel>
+    <button>Submit</button>
+  </form>
+
+  <p>First name value: {{ first.value }}</p>
+  <p>First name valid: {{ first.valid }}</p>
+  <p>Form value: {{ f.value | json }}</p>
+  <p>Form valid: {{ f.valid }}</p>
+  
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataList">
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.title }}</td>
+          <td>{{ item.body }}</td>
+        </tr>
+      </tbody>
+  </table>
+</div>
